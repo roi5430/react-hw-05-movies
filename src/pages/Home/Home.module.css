@@ -1,0 +1,27 @@
+section {
+  padding: 20px;
+}
+
+.home__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 305px);
+  gap: 20px;
+}
+
+.home__item {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+.home__item:hover,
+.home__item:focus {
+  box-shadow: 10px 5px 5px rgba(35, 56, 147, 0.251);
+}
+
+img {
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

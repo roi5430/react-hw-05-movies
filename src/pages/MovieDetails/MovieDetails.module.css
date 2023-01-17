@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  margin-top: 15px;
+}
+.button {
+  width: 100px;
+  background-color: rgba(82, 48, 169, 0.217);
+  height: 30px;
+  border: 2px solid rgb(49, 28, 154);
+  border-radius: 4px;
+}
