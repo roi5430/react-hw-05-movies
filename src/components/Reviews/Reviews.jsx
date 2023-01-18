@@ -20,7 +20,7 @@ const Reviews = () => {
   if (!movies) {
     return;
   }
-  if (movies.length < 3) {
+  if (movies.length < 1) {
     return <p>We don't have any reviews for this movie.</p>;
   }
 

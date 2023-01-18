@@ -1,10 +1,9 @@
-import axios from 'axios'; // eslint-disable-next-line
-import PropTypes from 'prop-types';
+import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useSearchParams, NavLink, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { SearchForm } from './SearchForm';
-import Skeleton from 'components/Skeleton';
+import { ImageGrid } from 'components/Skeleton';
 import { BASEURL_MOVIES, API_KEY, IMG_PATH } from '../../api-client';
 import css from '../Movies/Movies.module.css';
 
@@ -40,7 +39,7 @@ const Movies = () => {
   return (
     <section>
       <SearchForm onSubmit={updateQueryString} />
-      {isLoading && <Skeleton />}
+      {isLoading && <ImageGrid />}
       {movies ? (
         <ul className={css.list}>
           {movies.map(({ id, original_title, poster_path }) => (
@@ -53,9 +52,10 @@ const Movies = () => {
           ))}
         </ul>
       ) : (
-        <p>'Enter movie name'</p>
+        <p>toast('Something went wrong, please try again')</p>
       )}
     </section>
   );
 };
+
 export default Movies;

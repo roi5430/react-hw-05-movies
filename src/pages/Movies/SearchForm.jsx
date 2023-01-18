@@ -1,4 +1,4 @@
-// import toast from 'react-hot-toast';
+import PropTypes from 'prop-types';
 
 export const SearchForm = ({ onSubmit }) => {
   return (
@@ -15,4 +15,8 @@ export const SearchForm = ({ onSubmit }) => {
       </form>
     </div>
   );
+};
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

@@ -11,7 +11,9 @@ const Cast = () => {
   useEffect(() => {
     axios
       .get(`${BASEURL_MOVIES_DETALIS}${movieId}/credits?api_key=${API_KEY}`)
-      .then(({ data }) => setMovies(data.results))
+      .then(resp => {
+        return setMovies(resp.data.results);
+      })
       .catch(() => toast('Something went wrong, please try again'));
   }, [movieId]);
 

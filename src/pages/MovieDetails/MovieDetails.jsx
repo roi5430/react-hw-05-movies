@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState, Suspense } from 'react';
+import { useLocation, useParams, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { BASEURL_MOVIES_DETALIS, API_KEY, IMG_PATH } from '../../api-client';
-import Skeleton from 'components/Skeleton';
+import { Skeleton } from '../../components/Skeleton';
 import css from '../MovieDetails/MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -33,10 +33,12 @@ const MovieDetails = () => {
     movies;
   return (
     <section>
+      {isLoading && <Skeleton />}
+
       <button className={css.button}>
         <Link to={backLinkHref}>Go back</Link>
       </button>
-      {isLoading && <Skeleton />}
+
       <div className={css.card}>
         <img src={`${IMG_PATH}w300${poster_path}`} alt="Poster Film" />
 
@@ -58,7 +60,7 @@ const MovieDetails = () => {
       <p>Additional information</p>
       <ul>
         <li>
-          <Link to={`cast`} state={{ from: backLinkHref }}>
+          <Link to={'cast'} state={{ from: backLinkHref }}>
             Cast
           </Link>
         </li>
@@ -68,6 +70,9 @@ const MovieDetails = () => {
           </Link>
         </li>
       </ul>
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </section>
   );
 };

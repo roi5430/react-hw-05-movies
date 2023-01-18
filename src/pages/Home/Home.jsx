@@ -4,6 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { BASEURL_TRENDS, API_KEY, IMG_PATH } from '../../api-client';
 import css from '../Home/Home.module.css';
+import { ImageGrid } from 'components/Skeleton';
 
 const Home = () => {
   const location = useLocation();
@@ -23,7 +24,8 @@ const Home = () => {
     <section>
       <h2>Trending today</h2>
 
-      {isLoading && <h1>Loading... Please wait</h1>}
+      {isLoading && <ImageGrid />}
+
       {movies.length > 0 && (
         <ul className={css.home__list}>
           {movies.map(({ id, title, poster_path }) => (
