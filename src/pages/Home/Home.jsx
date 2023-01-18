@@ -10,6 +10,8 @@ const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const defaultPhoto =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr5L_NWQVyJSsuu6089Cj3cEwBMobBeAXG2w&usqp=CAU';
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,7 +33,14 @@ const Home = () => {
           {movies.map(({ id, title, poster_path }) => (
             <li key={id} className={css.home__item}>
               <NavLink to={`movies/${id}`} state={{ from: location }}>
-                <img src={`${IMG_PATH}w300${poster_path}`} alt="Poster Film" />
+                <img
+                  src={
+                    poster_path
+                      ? `${IMG_PATH}w300${poster_path}`
+                      : `${defaultPhoto}`
+                  }
+                  alt="Poster Film"
+                />
                 {title}
               </NavLink>
             </li>

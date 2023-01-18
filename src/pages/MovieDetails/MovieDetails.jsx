@@ -13,6 +13,8 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
+  const defaultPhoto =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr5L_NWQVyJSsuu6089Cj3cEwBMobBeAXG2w&usqp=CAU';
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,7 +42,12 @@ const MovieDetails = () => {
       </button>
 
       <div className={css.card}>
-        <img src={`${IMG_PATH}w300${poster_path}`} alt="Poster Film" />
+        <img
+          src={
+            poster_path ? `${IMG_PATH}w300${poster_path}` : `${defaultPhoto}`
+          }
+          alt="Poster Film"
+        />
 
         <ul className={css.card__list}>
           <li>

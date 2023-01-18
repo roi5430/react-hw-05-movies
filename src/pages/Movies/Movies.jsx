@@ -12,6 +12,8 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
+  const defaultPhoto =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr5L_NWQVyJSsuu6089Cj3cEwBMobBeAXG2w&usqp=CAU';
 
   const updateQueryString = e => {
     e.preventDefault();
@@ -45,7 +47,14 @@ const Movies = () => {
           {movies.map(({ id, original_title, poster_path }) => (
             <li key={id} className={css.item}>
               <NavLink to={`${id}`} state={{ from: location }}>
-                <img src={`${IMG_PATH}w300${poster_path}`} alt="Poster Film" />
+                <img
+                  src={
+                    poster_path
+                      ? `${IMG_PATH}w300${poster_path}`
+                      : `${defaultPhoto}`
+                  }
+                  alt="Poster Film"
+                />
                 {original_title}
               </NavLink>
             </li>
