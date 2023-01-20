@@ -4,10 +4,7 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
-// import Reviews from '../components/Reviews/Reviews';
 
-// const Movies = lazy(() => import('../pages/Movies/Movies'));
-// const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 
